@@ -1,0 +1,1 @@
+db.nerEntity.deleteMany({"entityName": ""})

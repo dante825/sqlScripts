@@ -1,0 +1,8 @@
+sudo update-alternatives --config x-terminal-emulator
+
+gsettings set org.gnome.desktop.default-applications.terminal exec 'gnome-terminal'
+
+
+OR
+this would change the default login shell
+chsh -s $(which zsh)

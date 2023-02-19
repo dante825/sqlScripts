@@ -1,0 +1,64 @@
+git remote host:
+
+----------
+commands to change remote
+1. git remote -v
+2. git remote add <remote name> <ssh path>
+3. git remote remove <remote name>
+4. git remote set-url <remote name> <url>
+5. git remote rename <current_name> <new_name>
+
+commands to fetch another branch and not checkout that branch
+git fetch <remote> <srcBranch>:<destBranch>
+
+REMINDER:
+git pull DOES FETCH THEN MERGE (git fetch && git merge)
+
+
+data-query-client
+ssh: git@192.168.12.6:dibots-dev/backend/data-query-client.git
+http: http://localhost:9000/dibots-dev/backend/data-query-client.git
+
+user-query-client
+ssh: git@192.168.12.6:dibots-dev/backend/user-query-client.git
+http: http://localhost:9000/dibots-dev/backend/user-query-client.git
+
+security-auth-session
+ssh: git@192.168.12.6:dibots-dev/backend/security-auth-session.git
+http: http://localhost:9000/dibots-dev/backend/security-auth-session.git
+
+nerSpark
+ssh: git@192.168.12.6:dibots/nerspark.git
+http: http://localhost:9000/dibots/nerspark.git
+
+brokerRankUpToDate
+ssh: git@192.168.12.6:dibots-dev/backend/brokerRankToDate.git
+http: http://localhost:9000/dibots-dev/backend/brokerRankToDate.git
+
+bursa-etl
+ssh: git@192.168.12.6:dibots-dev/pentaho/bursa-etl.git
+http: http://localhost:9000/dibots-dev/pentaho/bursa-etl.git
+
+sql-scripts:
+ssh: git@192.168.12.6:dibots/sql-scripts.git
+http: http://localhost:9000/dibots/sql-scripts.git
+
+elasticsearch-data-importer
+ssh: git@192.168.12.6:dibots-dev/backend/elasticsearch-data-importer.git
+http: http://localhost:9000/dibots-dev/backend/elasticsearch-data-importer.git
+
+db_python
+ssh: git@192.168.12.6:dibots-dev/backend/db_python.git
+http: http://localhost:9000/dibots-dev/backend/db_python.git
+
+data-mining
+ssh: git@192.168.12.6:dibots-dev/backend/data-mining.git
+http: http://localhost:9000/dibots-dev/backend/data-mining.git
+
+mvector-manager
+ssh: git@192.168.12.6:dibots-dev/backend/mvector-manager.git
+http: http://localhost:9000/dibots-dev/backend/mvector-manager.git
+
+mvector-query-client
+ssh: git@192.168.12.6:dibots-dev/backend/mvector-query-client.git
+http: http://localhost:9000/dibots-dev/backend/mvector-query-client.git

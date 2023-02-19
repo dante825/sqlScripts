@@ -1,0 +1,1 @@
+db.webCrawler.updateMany({"matchedEntities.entityName": { "$in": ["MAX "]}}, {$unset: {"nerFlag": ""}})

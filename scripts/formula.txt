@@ -1,0 +1,57 @@
+--===================
+-- adjustment_factor
+--===================
+adjustment factor in exchange_daily_transaction
+
+new factor = yesterday factor * (yesterday closing / today LACP)
+
+for CX to calculate new factor (live factor)
+new_factor = factor * (latest price / LACP)
+
+LACP should comes from the live price API
+52WeekHigh * factor / new_factor
+
+
+--==============
+-- ex_price
+--==============
+
+adjusted_closing = closing * factor (of the day)
+adjusted_lacp = lacp * factor (of the day)
+
+ex_price = adjusted_closing / latest factor
+
+--==================
+-- median liquidity
+--==================
+ ff_shares = shares_issued * free_float / 100
+ median_liquidity = median_volume / ff_shares
+
+
+
+ --=====================
+ -- annualised velocity
+ --=====================
+
+ -- with volume (single day)
+sum(volume_traded) / shares_outstanding * 248 * 100
+
+-- with volume (over a period)
+sum(volume) / no_of_trading_day * 248 / shares_outstanding
+
+
+-- with value (single day)
+sum(value_traded) / market_cap * 248 * 100
+
+-- with value (over a period)
+sum(velocity) over the period and average it
+
+
+--========================
+-- gain loss calculation
+--=======================
+
+sum the adjusted price changed within the date range
+get the adjusted lacp on the from date for the stock
+
+sum of adj price change / adjusted lacp on the from date * 100 = gain

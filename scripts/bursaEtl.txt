@@ -1,0 +1,536 @@
+================
+Bursa ETL
+================
+
+Contacts
+Quah Chen Nam (Chen Nam) 
+	- 012-6300959 
+	- chennam@bursamalaysia.com
+	- contact in case of demography data, daily_transaction data, and others
+	- for general bursa inquiry 
+
+Poon Yit Meng (Poon)
+	- 012-2706663 
+	- poonyitmeng@bursamalaysia.com 
+	- only for contra_fund_flow data and exchange_investor_stats data
+
+Currently all of these ETLs are run in 192.168.12.22
+
+The source of these ETLs are in GIT REPO
+	- http://192.168.12.6:9000/dibots-dev/pentaho/bursa-etl [PENTAHO & SQL]
+	- http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate [PYTHON]
+	- http://192.168.12.6:9000/dibots-dev/backend/db_python/ [PYTHON]
+
+The details for each of the bursa data would listed as such:
+a. the path to the scripts
+b. the unprocess directory, the directory where the files downloaded from the emails would be
+c. the archive directory, the location where the files are zipped and moved to after the files are processed
+d. the first command would be the command to start the etl, which start to download the files from the email (bm@dibots.com), after the download is successful then it would proceed with the rest of the process.
+e. in case the first command has problem downloading the file(s). The files are manually downloaded and move to the unprocess directory, then trigger the second scripts to process the files from that stage onwards.
+f. table(s) and script(s) involved
+
+
+1. exchange_entitlement
+	- PENTAHO SCRIPT: http://192.168.12.6:9000/dibots-dev/pentaho/bursa-etl/-/tree/master/daily_entitlements
+	- scheduled on weekdays 2100
+	a. /home/dibotsadmin/development/bursa-etl-no-scheduler/daily_entitlements/
+	b. /home/dibotsadmin/development/bursa_files/entitlement/
+	c. /home/dibotsadmin/development/bursa_archive/entitlement
+	d. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-entitlement.sh
+	e. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-sub-entitlement.sh
+	f. exchange_entitlement
+
+2. exchange_daily_sector_index
+	- PENTAHO SCRIPT: http://192.168.12.6:9000/dibots-dev/pentaho/bursa-etl/-/tree/master/daily-sector
+	- scheduled on weekdays 2300
+	a. /home/dibotsadmin/development/bursa-etl-no-scheduler/daily-sector/
+	b. /home/dibotsadmin/development/bursa_files/sectorial/
+	c. /home/dibotsadmin/development/bursa_archive/sectorial/
+	d. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-sectorial.sh
+	e. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-sub-sectorial.sh
+	f. exchange_daily_sector_index
+	   exchange_weekly_sector_index [not actively in use]
+
+3. exchange_daily_transaction
+	- PENTAHO SCRIPT: http://192.168.12.6:9000/dibots-dev/pentaho/bursa-etl/-/tree/master/daily_stock_transaction
+	- scheduled on weekdays 2100
+	a. /home/dibotsadmin/development/bursa-etl-no-scheduler/daily_stock_transaction/
+	b. /home/dibotsadmin/development/bursa_files/transaction/
+	c. /home/dibotsadmin/development/bursa_archive/transaction/
+	d. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-transaction.sh
+	e. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-sub-transaction.sh
+	f. exchange_daily_transaction
+	   ref_bursa_stock [for demography data joining purpose]
+	   ref_bursa_board [for demography data joining purpose]
+	   ref_bursa_sector [for demography data joining purpose]
+	   ref_bursa_sec_type [for demography data joining purpose]
+	   ref_demography_stock [for demography data joining purpose]
+	   exchange_weekly_transaction[not actively in use]
+	   exchange_stock_liquidity_median
+	   mv_exchange_gnls [materilized view]
+	   plc_total_return [materilized view]
+	   latest_bursa_stock_market_capitalisation [materilized view]
+	   latest_bursa_stock_one_year_net_profit_growth [materilized view]
+	   latest_bursa_stock_three_year_net_profit_growth [materilized view]
+	   latest_bursa_stock_five_year_net_profit_growth [materilized view]
+	   latest_qr_bursa_stock_net_profit [materilized view]
+	   latest_fy_bursa_stock_pat [materilized view]
+	   latest_bursa_stock_pat [materilized view]
+	   growth_and_value_stock_medians [materilized view]
+	   exchange_daily_avg [SMA EMA table] 
+		- PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/dailyAvg
+	   	- SERVER LOC: /home/dibotsadmin/dibots/kw-dev/dailyAvg
+	   plc_daily_pe 
+	   	- a table for GROWTH_AND_VALUE_STOCK
+	   	- PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/db_python/-/tree/master/pe
+	   	- SERVER LOC: /home/dibotsadmin/dibots/kw-dev/pe
+	   exchange_stock_macd
+	   	- PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/stockMacd
+	   	- SERVER LOC: /home/dibotsadmin/dibots/kw-dev/stockMacd
+	   exchange_stock_macd_short
+	   	- PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/stockMacdShort
+	   	- SERVER LOC: /home/dibotsadmin/dibots/kw-dev/stockMacdShort
+	   exchange_stock_macd_long
+	    - PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/stockMacdLong
+	   	- SERVER LOC: /home/dibotsadmin/dibots/kw-dev/stockMacdLong
+
+4. exchange_direct_business_trade
+	- PENTAHO SCRIPT: http://192.168.12.6:9000/dibots-dev/pentaho/bursa-etl/-/tree/master/exchange_direct_business_trade
+	- scheduled on weekdays 0500
+	a. /home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_direct_business_trade/
+	b. /home/dibotsadmin/development/bursa_files/direct_business/
+	c. /home/dibotsadmin/development/bursa_archive/direct_business/
+	d. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-dbt.sh
+	e. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-sub-dbt.sh
+	f. exchange_direct_business_trade
+	   exchange_dbt_broker_age_band
+	   exchange_dbt_stock_broker_nationality
+	   exchange_dbt_broker_movement
+	   exchange_dbt_broker_nationality
+	   exchange_dbt_stock_broker_group
+	   exchange_dbt_broker_stats
+	   exchange_dbt_stock_broker
+	   exchange_dbt_stock_movement
+	   exchange_dbt_stock
+
+	   NOTE: DBT ETL need to run before DEMOGRAPHY, because OMTDBT tables depend on both DBT and DEMOGRAPHY data. The ETL for OMTDBT is in DEMOGRAPHY ETL. This ETL should be fast, less than 30 seconds.
+
+5. exchange_demography
+	- PENTAHO SCRIPT: http://192.168.12.6:9000/dibots-dev/pentaho/bursa-etl/-/tree/master/exchange_trade_demography
+	- scheduled on weekdays 0500
+	a. /home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_trade_demography/
+	b. /home/dibotsadmin/development/bursa_files/demography/
+	c. /home/dibotsadmin/development/bursa_archive/demography/
+	d. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-demography.sh
+	e. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-sub-demography.sh
+	f. exchange_demography
+	   staging.exchange_demography_verify 
+	   	- A table to verify the volume of the demography files at the first step of the ETL
+	   	- the volume from demography files must equal to 2 times the volume in exchange_daily_transaction table else the ETL would stop
+	   exchange_demography_broker_age_band
+	   exchange_demography_broker_movement
+	   exchange_demography_stock_broker_nationality
+	   exchange_demography_broker_stats
+	   exchange_demography_stats
+	   exchange_demography_stock_retail_prof
+	   exchange_demography_stock_broker_stats
+	   exchange_demography_stock_broker_group
+	   exchange_demography_stock_movement
+	   exchange_daily_transaction_velocity
+	   exchange_demography_stock_broker
+	   exchange_demography_stock_week
+	   exchange_omtdbt_broker_age_band
+	   exchange_omtdbt_stock_broker_nationality
+	   exchange_omtdbt_broker_movement
+	   exchange_omtdbt_broker_stats
+	   exchange_omtdbt_stock_broker
+	   exchange_omtdbt_stock_movement
+	   exchange_omtdbt_stock
+	   exchange_omtdbt_stock_broker_group
+	   broker_rank_day
+	   broker_rank_week
+	   broker_rank_month
+	   broker_rank_qtr
+	   broker_rank_year
+	   broker_rank_wtd [PYTHON]
+	   broker_rank_mtd [PYTHON]
+	   broker_rank_qtd [PYTHON]
+	   broker_rank_ytd [PYTHON]
+	   	- PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/brokerRankToDate
+	   	- SERVER LOC: /home/dibotsadmin/dibots/kw-dev/brokerRankToDate
+	   broker_rank_omtdbt_day
+	   broker_rank_omtdbt_week
+	   broker_rank_omtdbt_month
+	   broker_rank_omtdbt_qtr
+	   broker_rank_omtdbt_year
+	   broker_rank_omtdbt_wtd [PYTHON]
+	   broker_rank_omtdbt_mtd [PYTHON]
+	   broker_rank_omtdbt_qtd [PYTHON]
+	   broker_rank_omtdbt_ytd [PYTHON]
+	   	- PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/brokerOmtDbt
+	   	- SERVER LOC: /home/dibotsadmin/dibots/kw-dev/brokerOmtDbt
+	   exchange_shareholdings [PYTHON]
+	   	- PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/shareholdings
+	   	- SERVER LOC: /home/dibotsadmin/dibots/kw-dev/shareholdings
+	   exchange_local_ma [not actively in use]
+	    - PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/localMa
+	    - SERVER LOC: /home/dibotsadmin/dibots/kw-dev/localMa
+	   exchange_foreign_ma [not actively in use]
+	   	- PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/foreignMa
+	    - SERVER LOC: /home/dibotsadmin/dibots/kw-dev/foreignMa
+	   exchange_local_inst_ma [not actively in use]
+	    - PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/localInstMa
+	    - SERVER LOC: /home/dibotsadmin/dibots/kw-dev/localInstMa
+	   exchange_local_retail_ma [not actively in use]
+	   	- PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/localRetailMa
+	    - SERVER LOC: /home/dibotsadmin/dibots/kw-dev/localRetailMa
+	   exchange_local_nominees_ma [not actively in use]
+	    - PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/localNomineesMa
+	    - SERVER LOC: /home/dibotsadmin/dibots/kw-dev/localNomineesMa
+	   exchange_local_inst_nom_ma [not actively in use]
+	    - PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/localInstNomMa
+	    - SERVER LOC: /home/dibotsadmin/dibots/kw-dev/localInstNomMa
+	   exchange_foreign_inst_ma [not actively in use]
+	    - PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/foreignInstMa
+	    - SERVER LOC: /home/dibotsadmin/dibots/kw-dev/foreignInstMa
+	   exchange_foreign_inst_nom_ma [not actively in use]
+	    - PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/foreignInstNomMa
+	    - SERVER LOC: /home/dibotsadmin/dibots/kw-dev/foreignInstNomMa
+	   exchange_prop_ma [not actively in use]
+	    - PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/propMa
+	    - SERVER LOC: /home/dibotsadmin/dibots/kw-dev/propMa
+	   exchange_ivt_ma [not actively in use]
+	   	- PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/ivtMa
+	    - SERVER LOC: /home/dibotsadmin/dibots/kw-dev/ivtMa
+	   exchange_pdt_ma [not actively in use]
+	    - PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/pdtMa
+	    - SERVER LOC: /home/dibotsadmin/dibots/kw-dev/pdtMa
+
+6. exchange_market_summary
+	- PENTAHO SCRIPT: http://192.168.12.6:9000/dibots-dev/pentaho/bursa-etl/-/tree/master/market_summary
+	- scheduled on weekdays at 1400 and 1800
+	a. /home/dibotsadmin/development/bursa-etl-no-scheduler/market_summary/
+	b. /home/dibotsadmin/development/bursa_files/market/
+	c. /home/dibotsadmin/development/bursa_archive/market/
+	d. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-market.sh
+	e. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-sub-market.sh
+	f. exchange_market_summary
+
+7. exchange_trade_origin
+	- PENTAHO SCRIPT: http://192.168.12.6:9000/dibots-dev/pentaho/bursa-etl/-/tree/master/exchange_trade_origin
+	- scheduled on weekdays at 0200
+	a. /home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_trade_origin/
+	b. /home/dibotsadmin/development/bursa_files/trade_origin/
+	c. /home/dibotsadmin/development/bursa_archive/trade_origin/
+	d. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-eto.sh
+	e. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-sub-eto.sh
+	f. exchange_trade_origin [not actively in use]
+	 	- this table and ETL are there but the data is not incorporated into anywhere yet
+
+8. exchange_short_selling
+	- PENTAHO SCRIPT: http://192.168.12.6:9000/dibots-dev/pentaho/bursa-etl/-/tree/master/exchange_short_selling
+	- scheduled on weekdays at 2300
+	a. /home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_short_selling/
+	b. /home/dibotsadmin/development/bursa_files/shortselling/
+	c. /home/dibotsadmin/development/bursa_archive/shortselling/
+	d. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-shortselling.sh
+	e. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-sub-shortselling.sh
+	f. exchange_short_selling
+	   exchange_shortselling_sync_view
+	   	- a view
+	   	- join exchange_net_short_position with exchange_short_selling
+	   	- exchange_net_short_position depend on crawler
+
+9. exchange_contra_fund_flow
+	- PENTAHO SCRIPT: http://192.168.12.6:9000/dibots-dev/pentaho/bursa-etl/-/tree/master/contra_fund_flow
+	- scheduled on weekdays at 0700
+	- The file for contra_fund_flow is downloaded from the AWS cloud
+	- PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/bursaAws
+	- SERVER LOC: /home/dibotsadmin/dibots/kw-dev/bursaAwsContra
+	a. /home/dibotsadmin/development/bursa-etl-no-scheduler/contra_fund_flow/
+	b. /home/dibotsadmin/development/bursa_files/contra_fund_flow/
+	c. /home/dibotsadmin/development/bursa_archive/contra_fund_flow/
+	d. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-cff.sh
+	e. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-sub-cff.sh
+	f. exchange_contra_fund_flow
+	   staging.exchange_contra_fund_flow_verify [verify the volume with the daily transaction volume]
+	   exchange_contra_ff_stock
+	   exchange_contra_movement_ratio_mview [materialized view]
+
+10. exchange_investor_stats
+	- PENTAHO SCRIPT: http://192.168.12.6:9000/dibots-dev/pentaho/bursa-etl/-/tree/master/exchange_investor_stats
+	- scheduled on weekdays at 0915
+	- The file for exchange_investor_stats is downloaded from the AWS cloud
+	- PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/bursaAws
+	- SERVER LOC: /home/dibotsadmin/dibots/kw-dev/bursaAws
+	a. /home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_investor_stats/
+	b. /home/dibotsadmin/development/bursa_files/inv_stats/
+	c. /home/dibotsadmin/development/bursa_archive/inv_stats/
+	d. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-inv.sh
+	e. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-sub-inv.sh
+	f. exchange_investor_stats
+
+11. exchange_investor_stats_week
+	- PENTAHO SCRIPT: http://192.168.12.6:9000/dibots-dev/pentaho/bursa-etl/-/tree/master/exchange_investor_stats_week
+	- scheduled on weekdays at 0915
+	- The file for exchange_investor_stats is downloaded from the AWS cloud
+	- PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/bursaAws
+	- SERVER LOC: /home/dibotsadmin/dibots/kw-dev/bursaAws
+	a. /home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_investor_stats_week/
+	b. /home/dibotsadmin/development/bursa_files/inv_stats_week/
+	c. /home/dibotsadmin/development/bursa_archive/inv_stats_week/
+	d. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-inv.sh
+	e. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-sub-inv-week.sh
+	f. exchange_investor_stats_week
+
+12. exchange_investor_stats_month
+	- PENTAHO SCRIPT: http://192.168.12.6:9000/dibots-dev/pentaho/bursa-etl/-/tree/master/exchange_investor_stats_month
+	- scheduled on weekdays at 0915
+	- The file for exchange_investor_stats is downloaded from the AWS cloud
+	- PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/bursaAws
+	- SERVER LOC: /home/dibotsadmin/dibots/kw-dev/bursaAws
+	a. /home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_investor_stats_month/
+	b. /home/dibotsadmin/development/bursa_files/inv_stats_month/
+	c. /home/dibotsadmin/development/bursa_archive/inv_stats_month/
+	d. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-inv.sh
+	e. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-sub-inv-month.sh
+	f. exchange_investor_stats_month
+
+13. exchange_investor_stats_qtr
+	- PENTAHO SCRIPT: http://192.168.12.6:9000/dibots-dev/pentaho/bursa-etl/-/tree/master/exchange_investor_stats_qtr
+	- scheduled on weekdays at 0915
+	- The file for exchange_investor_stats is downloaded from the AWS cloud
+	- PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/bursaAws
+	- SERVER LOC: /home/dibotsadmin/dibots/kw-dev/bursaAws
+	a. /home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_investor_stats_qtr/
+	b. /home/dibotsadmin/development/bursa_files/inv_stats_qtr/
+	c. /home/dibotsadmin/development/bursa_archive/inv_stats_qtr/
+	d. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-inv.sh
+	e. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-sub-inv-qtr.sh
+	f. exchange_investor_stats_qtr
+
+13. exchange_investor_stats_semi_annual
+	- PENTAHO SCRIPT: http://192.168.12.6:9000/dibots-dev/pentaho/bursa-etl/-/tree/master/exchange_investor_stats_semi_annual
+	- scheduled on weekdays at 0915
+	- The file for exchange_investor_stats is downloaded from the AWS cloud
+	- PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/bursaAws
+	- SERVER LOC: /home/dibotsadmin/dibots/kw-dev/bursaAws
+	a. /home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_investor_stats_semi_annual/
+	b. /home/dibotsadmin/development/bursa_files/inv_stats_semi_annual/
+	c. /home/dibotsadmin/development/bursa_archive/inv_stats_semi_annual/
+	d. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-inv.sh
+	e. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-sub-inv-semi.sh
+	f. exchange_investor_stats_semi_annual
+
+14. exchange_investor_stats_year
+	- PENTAHO SCRIPT: http://192.168.12.6:9000/dibots-dev/pentaho/bursa-etl/-/tree/master/exchange_investor_stats_year
+	- scheduled on weekdays at 0915
+	- The file for exchange_investor_stats is downloaded from the AWS cloud
+	- PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/bursaAws
+	- SERVER LOC: /home/dibotsadmin/dibots/kw-dev/bursaAws
+	a. /home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_investor_stats_year/
+	b. /home/dibotsadmin/development/bursa_files/inv_stats_year/
+	c. /home/dibotsadmin/development/bursa_archive/inv_stats_year/
+	d. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-inv.sh
+	e. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-sub-inv-year.sh
+	f. exchange_investor_stats_year
+
+15. exchange_investor_stock_stats
+	- PENTAHO SCRIPT: http://192.168.12.6:9000/dibots-dev/pentaho/bursa-etl/-/tree/master/exchange_investor_stock_stats
+	- scheduled on weekdays at 0915
+	- The file for exchange_investor_stats is downloaded from the AWS cloud
+	- PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/bursaAws
+	- SERVER LOC: /home/dibotsadmin/dibots/kw-dev/bursaAws
+	a. /home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_investor_stock_stats/
+	b. /home/dibotsadmin/development/bursa_files/inv_stock_stats/
+	c. /home/dibotsadmin/development/bursa_archive/inv_stock_stats/
+	d. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-inv.sh
+	e. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-sub-inv.sh
+	f. exchange_investor_stock_stats
+
+16. exchange_investor_stock_stats_week
+	- PENTAHO SCRIPT: http://192.168.12.6:9000/dibots-dev/pentaho/bursa-etl/-/tree/master/exchange_investor_stats_week
+	- scheduled on weekdays at 0915
+	- The file for exchange_investor_stats is downloaded from the AWS cloud
+	- PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/bursaAws
+	- SERVER LOC: /home/dibotsadmin/dibots/kw-dev/bursaAws
+	a. /home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_investor_stats_week/
+	b. /home/dibotsadmin/development/bursa_files/inv_stock_stats_week/
+	c. /home/dibotsadmin/development/bursa_archive/inv_stock_stats_week/
+	d. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-inv.sh
+	e. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-sub-inv-stock-week.sh
+	f. exchange_investor_stock_stats_week
+
+17. exchange_investor_stock_stats_month
+	- PENTAHO SCRIPT: http://192.168.12.6:9000/dibots-dev/pentaho/bursa-etl/-/tree/master/exchange_investor_stats_month
+	- scheduled on weekdays at 0915
+	- The file for exchange_investor_stats is downloaded from the AWS cloud
+	- PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/bursaAws
+	- SERVER LOC: /home/dibotsadmin/dibots/kw-dev/bursaAws
+	a. /home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_investor_stats_month/
+	b. /home/dibotsadmin/development/bursa_files/inv_stock_stats_month/
+	c. /home/dibotsadmin/development/bursa_archive/inv_stock_stats_month/
+	d. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-inv.sh
+	e. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-sub-inv-stock-month.sh
+	f. exchange_investor_stock_stats_month
+
+18. exchange_investor_stock_stats_qtr
+	- PENTAHO SCRIPT: http://192.168.12.6:9000/dibots-dev/pentaho/bursa-etl/-/tree/master/exchange_investor_stats_qtr
+	- scheduled on weekdays at 0915
+	- The file for exchange_investor_stats is downloaded from the AWS cloud
+	- PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/bursaAws
+	- SERVER LOC: /home/dibotsadmin/dibots/kw-dev/bursaAws
+	a. /home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_investor_stats_qtr/
+	b. /home/dibotsadmin/development/bursa_files/inv_stock_stats_qtr/
+	c. /home/dibotsadmin/development/bursa_archive/inv_stock_stats_qtr/
+	d. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-inv.sh
+	e. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-sub-inv-stock-qtr.sh
+	f. exchange_investor_stock_stats_qtr
+
+19. exchange_investor_stock_stats_semi_annual
+	- PENTAHO SCRIPT: http://192.168.12.6:9000/dibots-dev/pentaho/bursa-etl/-/tree/master/exchange_investor_stats_semi_annual
+	- scheduled on weekdays at 0915
+	- The file for exchange_investor_stats is downloaded from the AWS cloud
+	- PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/bursaAws
+	- SERVER LOC: /home/dibotsadmin/dibots/kw-dev/bursaAws
+	a. /home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_investor_stats_semi_annual/
+	b. /home/dibotsadmin/development/bursa_files/inv_stock_stats_semi_annual/
+	c. /home/dibotsadmin/development/bursa_archive/inv_stock_stats_semi_annual/
+	d. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-inv.sh
+	e. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-sub-inv-stock-semi.sh
+	f. exchange_investor_stock_stats_semi_annual
+
+20. exchange_investor_stock_stats_year
+	- PENTAHO SCRIPT: http://192.168.12.6:9000/dibots-dev/pentaho/bursa-etl/-/tree/master/exchange_investor_stats_year
+	- scheduled on weekdays at 0915
+	- The file for exchange_investor_stats is downloaded from the AWS cloud
+	- PYTHON SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/brokerRankToDate/-/tree/master/bursaAws
+	- SERVER LOC: /home/dibotsadmin/dibots/kw-dev/bursaAws
+	a. /home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_investor_stats_year/
+	b. /home/dibotsadmin/development/bursa_files/inv_stock_stats_year/
+	c. /home/dibotsadmin/development/bursa_archive/inv_stock_stats_year/
+	d. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-inv.sh
+	e. sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-sub-inv-stock-year.sh
+	f. exchange_investor_stock_stats_year
+
+======================
+Additional scripts
+======================
+
+1. bursa_strcwarr_profile
+	- PENTAHO SCRIPT: http://192.168.12.6:9000/dibots-dev/backend/db_python/-/tree/master/StrcWarrExtractor
+	- SERVER LOC: /home/dibotsadmin/dibots/kw-dev/strcWarrExt
+	- extract STRUCTURED WARRANTS profile information from BURSA ANNOUNCEMENT
+
+2. corp_news
+	- SQL script to copy company announcement from WVB table to DIBOTS table
+	- the source table is different from the WVB_BOX source so this is via the foreign table method
+	- SERVER: 192.168.12.6
+	- SERVER LOC: /mnt/sdb/dibots/kw-app/corpNewsUpdater
+	- scheduled at crontab, every hour
+	- a copy of the script is in GIT REPO: http://192.168.12.6:9000/dibots-dev/pentaho/bursa-etl/-/tree/master/sql_scripts/corpNewsInsertion.sql
+	- the source of this data is from a crawler handled by Tung of the Vietnam team, skype: live:a374081b46d29d49
+	- currently for bursa announcement we have the crawler from Joawin as well
+	- a view, bursa_announcement_view, merge both sources of the bursa announcements
+	- wvb_news_attachment
+	- wvb_news_item
+	- wvb_news_item_body
+	- wvb_news_item_company
+
+3. NER
+	- GIT REPO: http://192.168.12.6:9000/dibots/nerspark
+	- SERVER LOC 1: /home/dibotsadmin/dibots/ner_prog/mongo_ner
+	- SERVER LOC 2: /home/dibotsadmin/dibots/ner-corpnews
+	- the NER is applied to news in mongoDB and bursa announcement table
+	- it is scheduled on crontab every hourly
+	- the resulting fields are saved into the mongo records and the columns in wvb_news_item_body
+
+4. News Categorizer
+	- GIT REPO: http://192.168.12.6:9000/dibots-dev/backend/db_python/-/tree/master/NewsCtgzer
+	- SERVER LOC: /home/dibotsadmin/dibots/kw-dev/NewsCtgzer
+	- scheduled at every 15 minutes
+	- this script categorize the news into several categories and identity the PLC mentioned in the article
+	- the result of this script is not in use yet
+
+5. Daily data check
+	- just a check to make sure all the data in the tables are up to date
+	- OPTIONAL. If the ETLs are fine then most probably the data is fine
+	- GIT REPO: http://192.168.12.6:9000/dibots-dev/pentaho/bursa-etl/-/tree/master/sql_scripts/1-demography-verify.sql
+	- this SQL script check the latest day data from every tables mentioned here
+	- GIT REPO: http://192.168.12.6:9000/dibots-dev/pentaho/bursa-etl/-/tree/master/sql_scripts/2-demography-verify.sql
+	- this SQL script check the volume in the demography derived tables to make sure the volume matched the original table
+
+
+The current crontab in 192.168.12.22:
+*/15 * * * * sh /home/dibotsadmin/dibots/kw-dev/NewsCtgzer/start.sh
+15 * * * * sh /home/dibotsadmin/dibots/ner-corpnews/start-ner.sh
+10 * * * * sh /home/dibotsadmin/dibots/ner_prog/mongo_ner/start.sh
+*/30 * * * * /home/dibotsadmin/scripts/kill-chrome.sh
+30 23 * * * /home/dibotsadmin/scripts/crwlog-backup.sh
+0 2 * * 1-5 sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-eto.sh
+0 4 * * * sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-refer-to.sh
+0 5 * * 1-5 sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-dbt.sh
+0 5 * * 1-5 sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-demography.sh
+0 6 * * * sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-refresh-views.sh
+0 7 * * * sh /home/dibotsadmin/dibots/kw-dev/strcWarrExt/start.sh
+15 7 * * 1-5 sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-cff.sh
+15 8 * * * sh /home/dibotsadmin/dibots/kw-dev/shScripts/clearCache.sh
+15 9 * * 1-5 sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-inv.sh
+45 9 * * * sh /home/dibotsadmin/dibots/kw-dev/shScripts/clearCache.sh
+0 14 * * 1-5 sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-market.sh
+0 18 * * 1-5 sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-market.sh
+0 21 * * 1-5 sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-entitlement.sh
+0 21 * * 1-5 sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-transaction.sh
+0 23 * * 1-5 sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-sectorial.sh
+0 23 * * 1-5 sh /home/dibotsadmin/development/bursa-etl-no-scheduler/scripts/start-shortselling.sh
+
+
+
+============================
+Periodic data extraction
+============================
+
+GIT REPO: http://192.168.12.6:9000/dibots-dev/pentaho/bursa-etl/-/tree/master/sql_scripts
+
+1. CGS-CIMB
+	- First working day of every week, Monday, weekly file
+	- First Monday on every month, monthly file
+	- Weekly script: ext-cgs-weekly.sql
+	- Monthly script: ext-cgs-monthly.sql
+	- Weekly sample file: cgsWeekly-20220912.xlsx
+	- Monthly sample file: cgsMonthly-2022-08.xlsx
+	- Emails: 
+		- yuejia.lim@cgs-cimb.com
+		- ivy.ng@cgs-cimb.com
+		- nagulan.ravi@cgs-cimb.com
+
+2. PLC financial stats for Bursa Malaysia
+	- Every month
+	- SQL script: Bursa-Monthly-Financial-Stats-Report.sql
+	- sample file: bursa_2022_08.csv
+	- Email: chennam@bursamalaysia.com
+
+3. Some clients may request some ad hoc data extraction
+	- The SQL scripts used are those with ext prefix
+
+===========================
+Uploading research report
+===========================
+
+login credentials
+username: scm.km002
+password: dibotsX2021
+
+telegram group to get the report:
+	- https://t.me/RHBRetailEquitiesMalaysia
+	- https://t.me/Shortterm
+	- https://t.me/mplusOTG
+	- https://t.me/KenangaTradetoWin
+	- https://t.me/acentclibrary
+
+Steps:
+1. Upload the report with the scm.km002 user. So that the SC user can view those reports uploaded by you
+2. Login with an ADMIN user, check the extracted information of each of the research report
+3. Make sure the information of the reports are extracted correctly, correct those that are not.
+
+

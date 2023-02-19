@@ -1,0 +1,17 @@
+all the desktop files location for UBUNTU
+
+1. /usr/share/applications
+2. ~/.local/share/applications/
+3. /var/lib/snapd/desktop/applications (for snap application)
+
+Commands to install desktop files (or you can just move it to the directories specified above)
+sudo desktop-file-install ~/myapp.desktop
+
+Squirrel SQL:
+desktop file: /var/lib/snapd/desktop/applications
+executable: /snap/bin
+
+Dbeaver:
+desktop file: /usr/share/applications/
+desktop file: .local/usr/share/applications/
+executable: /usr/bin/dbeaver -> /usr/share/dbeaver/dbeaver

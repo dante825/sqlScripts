@@ -1,0 +1,1 @@
+db.webCrawler.updateMany({"nerModelVersion":0.7}, {$set: {"nerModelVersion":0.6}})

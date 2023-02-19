@@ -1,0 +1,335 @@
+Local ETL database table process paths
+archive: 
+/media/db/1TBHardDisk/workspaces/wvbIncrArchive/
+unprocessed: 
+/media/db/1TBHardDisk/workspaces/wvbIncrUnprocessed/
+
+Local bursa ETL process path
+============================
+denti_archive: /media/db/1TBHardDisk/workspaces/bursaArchive/daily_entitlements/
+denti_unprocess: /media/db/1TBHardDisk/workspaces/bursaFiles/daily_entitlements/
+
+dsect_archive: /media/db/1TBHardDisk/workspaces/bursaArchive/daily_sectorial/
+dsect_unprocess: /media/db/1TBHardDisk/workspaces/bursaFiles/daily_sectorial/
+
+dtrans_archive: /media/db/1TBHardDisk/workspaces/bursaArchive/daily_stock_transaction/
+dtrans_unprocess: /media/db/1TBHardDisk/workspaces/bursaFiles/daily_stock_transaction/
+
+etd_archive: /media/db/1TBHardDisk/workspaces/bursaArchive/exchange_trade_demography/
+etd_unprocess: /media/db/1TBHardDisk/workspaces/bursaFiles/exchange_trade_demography/
+
+mart_archive: /media/db/1TBHardDisk/workspaces/bursaArchive/market_summary/
+mart_unprocess: /media/db/1TBHardDisk/workspaces/bursaFiles/market_summary/
+
+Server bursa ETL process path
+===============================
+denti_archive: /mnt/sdc/bursa_incrementals/archive/daily_entitlements/
+denti_unprocess: /mnt/sdc/bursa_incrementals/unprocessed/daily_entitlements/
+
+dsect_archive: /mnt/sdc/bursa_incrementals/archive/daily_sectorial/
+dsect_unprocess: /mnt/sdc/bursa_incrementals/unprocessed/daily_sectorial/
+
+dtrans_archive: /mnt/sdc/bursa_incrementals/archive/daily_stock_transaction/
+dtrans_unprocess: /mnt/sdc/bursa_incrementals/unprocessed/daily_stock_transaction/
+
+etd_archive: /mnt/sdc/bursa_incrementals/archive/demography/
+etd_unprocess: /mnt/sdc/bursa_incrementals/unprocessed/demography/
+
+mart_archive: /mnt/sdc/bursa_incrementals/archive/market_summary/
+mart_unprocess: /mnt/sdc/bursa_incrementals/unprocessed/market_summary/
+
+Server 22 bursa ETL process path
+================================
+denti_archive: /home/dibotsadmin/development/bursa_archive/entitlement/
+denti_unprocess: /home/dibotsadmin/development/bursa_files/entitlement/
+
+dsect_archive: /home/dibotsadmin/development/bursa_archive/sectorial/
+dsect_unprocess: /home/dibotsadmin/development/bursa_files/sectorial/
+
+dtrans_archive: /home/dibotsadmin/development/bursa_archive/transaction/
+dtrans_unprocess: /home/dibotsadmin/development/bursa_files/transaction/
+
+etd_archive: /home/dibotsadmin/development/bursa_archive/demography/
+etd_unprocess: /home/dibotsadmin/development/bursa_files/demography/
+
+mart_archive: /home/dibotsadmin/development/bursa_archive/market/
+mart_unprocess: /home/dibotsadmin/development/bursa_files/market/
+
+eis_tmp: /home/dibotsadmin/development/bursa_files/inv_tmp/
+eis_archive: /home/dibotsadmin/development/bursa_archive/inv_stats/
+eis_unprocess: /home/dibotsadmin/development/bursa_files/inv_stats/
+eiss_arhive: /home/dibotsadmin/development/bursa_archive/inv_stock_stats/
+eiss_unprocess: /home/dibotsadmin/development/bursa_files/inv_stock_stats/
+eiss_loc: /home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_investor_stock_stats/
+
+eism_archive: /home/dibotsadmin/development/bursa_archive/inv_stats_month/
+eism_unprocess: /home/dibotsadmin/development/bursa_files/inv_stats_month/
+
+eisq_archive: /home/dibotsadmin/development/bursa_archive/inv_stats_qtr/
+eisq_unprocess: /home/dibotsadmin/development/bursa_files/inv_stats_qtr/
+
+eissa_archive: /home/dibotsadmin/development/bursa_archive/inv_stats_semi_annual/
+eissa_unprocess: /home/dibotsadmin/development/bursa_files/inv_stats_semi_annual/
+
+eisw_archive: /home/dibotsadmin/development/bursa_archive/inv_stats_week/
+eisw_unprocess: /home/dibotsadmin/development/bursa_archive/inv_stats_week/
+
+eisy_archive: /home/dibotsadmin/development/bursa_archive/inv_stats_year/
+eisy_unprocess: /home/dibotsadmin/development/bursa_archive/inv_stats_year/
+
+eissm_archive: /home/dibotsadmin/development/bursa_archive/inv_stock_stats_month/
+eissm_unprocess: /home/dibotsadmin/development/bursa_files/inv_stock_stats_month/
+
+eissq_archive: /home/dibotsadmin/development/bursa_archive/inv_stock_stats_qtr/
+eissq_unprocess: /home/dibotsadmin/development/bursa_files/inv_stock_stats_qtr/
+
+eisssa_archive: /home/dibotsadmin/development/bursa_archive/inv_stock_stats_semi_annual/
+eisssa_unprocess: /home/dibotsadmin/development/bursa_files/inv_stock_stats_semi_annual/
+
+eissw_archive: /home/dibotsadmin/development/bursa_archive/inv_stock_stats_week/
+eissw_unprocess: /home/dibotsadmin/development/bursa_files/inv_stock_stats_week/
+
+eissy_archive: /home/dibotsadmin/development/bursa_archive/inv_stock_stats_year/
+eissy_unprocess: /home/dibotsadmin/development/bursa_files/inv_stock_stats_year/
+
+ess_archive: /home/dibotsadmin/development/bursa_archive/shortselling/
+ess_unprocess: /home/dibotsadmin/development/bursa_files/shortselling/
+
+dbt_archive: /home/dibotsadmin/development/bursa_archive/direct_business/
+dbt_unprocess: /home/dibotsadmin/development/bursa_files/direct_business/
+
+eto_archive: /home/dibotsadmin/development/bursa_archive/trade_origin/
+eto_unprocess: /home/dibotsadmin/development/bursa_files/trade_origin/
+
+=======================================================================
+KITCHEN command to start kjb in terminal at SERVER 22
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/daily_entitlements/start_daily_entitlement_job.kjb
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/daily_entitlements/sub_daily_entitlement_job.kjb
+
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/daily-sector/start_daily_sector_job.kjb
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/daily-sector/sub_daily_sector_job.kjb
+sh /home/dibotsadmin/development/data-integration/pan.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/daily-sector/weekly_sector.ktr
+
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/daily_stock_transaction/start_daily_transaction_job.kjb
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/daily_stock_transaction/sub_daily_transaction_job.kjb
+sh /home/dibotsadmin/development/data-integration/pan.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/daily_stock_transaction/weekly_stock_transaction.ktr
+sh /home/dibotsadmin/development/data-integration/pan.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/daily_stock_transaction/ref_bursa_stock.ktr
+sh /home/dibotsadmin/development/data-integration/pan.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/daily_stock_transaction/ref_bursa_board.ktr
+sh /home/dibotsadmin/development/data-integration/pan.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/daily_stock_transaction/ref_bursa_sector.ktr
+sh /home/dibotsadmin/development/data-integration/pan.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/daily_stock_transaction/ref_bursa_sec_type.ktr
+
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/market_summary/start_market_summary.kjb
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/market_summary/sub_summary_job.kjb
+
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_trade_demography/start_exchange_trade_demography_job.kjb
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_trade_demography/sub_etd_job.kjb
+
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_trade_demography/etd_tables_update.kjb
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_trade_demography/update_etd_tables.kjb
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_trade_demography/omtdbt_update.kjb
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_trade_demography/broker_tables_update.kjb
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_trade_demography/group_type_sma.kjb
+
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_investor_stats/start_eis_job.kjb
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_investor_stats/sub_eis_job.kjb
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_investor_stats_week/start_eisw_job.kjb
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_investor_stats_week/sub_eisw_job.kjb
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_investor_stats_month/start_eism_job.kjb
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_investor_stats_month/sub_eism_job.kjb
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_investor_stats_qtr/sub_eisq_job.kjb
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_investor_stats_semi_annual/sub_eissa_job.kjb
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_investor_stats_year/sub_eisy_job.kjb
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_investor_stock_stats/sub_eiss_job.kjb
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_investor_stats_week/sub_eissw_job.kjb
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_investor_stats_month/sub_eissm_job.kjb
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_investor_stats_qtr/sub_eissq_job.kjb
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_investor_stats_semi_annual/sub_eisssa_job.kjb
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_investor_stats_year/sub_eissy_job.kjb
+
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_direct_business_trade/start_dbt_job.kjb
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_direct_business_trade/sub_dbt_job.kjb
+
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_short_selling/start_short_selling_job.kjb
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_short_selling/sub_short_selling_job.kjb
+
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_trade_origin/start_eto_job.kjb
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/exchange_trade_origin/sub_eto_job.kjb
+
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/etl_lke/start_etl_lke_job.kjb
+sh /home/dibotsadmin/development/data-integration/pan.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/etl_lke/identifier_refer_to.ktr
+sh /home/dibotsadmin/development/data-integration/pan.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/etl_lke/update_tables_id_refer_to.ktr
+
+sh /home/dibotsadmin/development/data-integration/kitchen.sh -file=/home/dibotsadmin/development/bursa-etl-no-scheduler/refresh_views/refresh_views_job.kjb
+
+Server 3 bursa ETL process path
+================================
+denti_archive: /home/dbsadmin/bursa-etl/bursa_archive/entitlement/
+denti_unprocess: /home/dbsadmin/bursa-etl/bursa_files/entitlement/
+
+dsect_archive: /home/dbsadmin/bursa-etl/bursa_archive/sectorial/
+dsect_unprocess: /home/dbsadmin/bursa-etl/bursa_files/sectorial/
+
+dtrans_archive: /home/dbsadmin/bursa-etl/bursa_archive/transaction/
+dtrans_unprocess: /home/dbsadmin/bursa-etl/bursa_files/transaction/
+
+etd_archive: /home/dbsadmin/bursa-etl/bursa_archive/demography/
+etd_unprocess: /home/dbsadmin/bursa-etl/bursa_files/demography/
+
+mart_archive: /home/dbsadmin/bursa-etl/bursa_archive/market/
+mart_unprocess: /home/dbsadmin/bursa-etl/bursa_files/market/
+
+eis_tmp: /home/dbsadmin/bursa-etl/bursa_files/inv_tmp/
+eis_archive: /home/dbsadmin/bursa-etl/bursa_archive/inv_stats/
+eis_unprocess: /home/dbsadmin/bursa-etl/bursa_files/inv_stats/
+eiss_arhive: /home/dbsadmin/bursa-etl/bursa_archive/inv_stock_stats/
+eiss_unprocess: /home/dbsadmin/bursa-etl/bursa_files/inv_stock_stats/
+eiss_loc: /home/dbsadmin/bursa-etl/etlScripts/exchange_investor_stock_stats/
+
+eism_archive: /home/dbsadmin/bursa-etl/bursa_archive/inv_stats_month/
+eism_unprocess: /home/dbsadmin/bursa-etl/bursa_files/inv_stats_month/
+
+eisq_archive: /home/dbsadmin/bursa-etl/bursa_archive/inv_stats_qtr/
+eisq_unprocess: /home/dbsadmin/bursa-etl/bursa_files/inv_stats_qtr/
+
+eissa_archive: /home/dbsadmin/bursa-etl/bursa_archive/inv_stats_semi_annual/
+eissa_unprocess: /home/dbsadmin/bursa-etl/bursa_files/inv_stats_semi_annual/
+
+eisw_archive: /home/dbsadmin/bursa-etl/bursa_archive/inv_stats_week/
+eisw_unprocess: /home/dbsadmin/bursa-etl/bursa_archive/inv_stats_week/
+
+eisy_archive: /home/dbsadmin/bursa-etl/bursa_archive/inv_stats_year/
+eisy_unprocess: /home/dbsadmin/bursa-etl/bursa_archive/inv_stats_year/
+
+eissm_archive: /home/dbsadmin/bursa-etl/bursa_archive/inv_stock_stats_month/
+eissm_unprocess: /home/dbsadmin/bursa-etl/bursa_files/inv_stock_stats_month/
+
+eissq_archive: /home/dbsadmin/bursa-etl/bursa_archive/inv_stock_stats_qtr/
+eissq_unprocess: /home/dbsadmin/bursa-etl/bursa_files/inv_stock_stats_qtr/
+
+eisssa_archive: /home/dbsadmin/bursa-etl/bursa_archive/inv_stock_stats_semi_annual/
+eisssa_unprocess: /home/dbsadmin/bursa-etl/bursa_files/inv_stock_stats_semi_annual/
+
+eissw_archive: /home/dbsadmin/bursa-etl/bursa_archive/inv_stock_stats_week/
+eissw_unprocess: /home/dbsadmin/bursa-etl/bursa_files/inv_stock_stats_week/
+
+eissy_archive: /home/dbsadmin/bursa-etl/bursa_archive/inv_stock_stats_year/
+eissy_unprocess: /home/dbsadmin/bursa-etl/bursa_files/inv_stock_stats_year/
+
+ess_archive: /home/dbsadmin/bursa-etl/bursa_archive/shortselling/
+ess_unprocess: /home/dbsadmin/bursa-etl/bursa_files/shortselling/
+
+dbt_archive: /home/dbsadmin/bursa-etl/bursa_archive/direct_business/
+dbt_unprocess: /home/dbsadmin/bursa-etl/bursa_files/direct_business/
+
+eto_archive: /home/dbsadmin/bursa-etl/bursa_archive/trade_origin/
+eto_unprocess: /home/dbsadmin/bursa-etl/bursa_files/trade_origin/
+
+=======================================================================
+KITCHEN command to start kjb in terminal at SERVER 3
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/daily_entitlements/start_daily_entitlement_job.kjb
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/daily_entitlements/sub_daily_entitlement_job.kjb
+
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/daily-sector/start_daily_sector_job.kjb
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/daily-sector/sub_daily_sector_job.kjb
+
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/daily_stock_transaction/start_daily_transaction_job.kjb
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/daily_stock_transaction/sub_daily_transaction_job.kjb
+
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/market_summary/start_market_summary.kjb
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/market_summary/sub_summary_job.kjb
+
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/exchange_trade_demography/start_exchange_trade_demography_job.kjb
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/exchange_trade_demography/sub_etd_job.kjb
+
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/exchange_trade_demography/etd_tables_update.kjb
+
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/exchange_trade_demography/update_etd_tables.kjb
+
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/exchange_investor_stats/start_eis_job.kjb
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/exchange_investor_stats/sub_eis_job.kjb
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/exchange_investor_stats_week/start_eisw_job.kjb
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/exchange_investor_stats_week/sub_eisw_job.kjb
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/exchange_investor_stats_month/start_eism_job.kjb
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/exchange_investor_stats_month/sub_eism_job.kjb
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/exchange_investor_stats_qtr/sub_eisq_job.kjb
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/exchange_investor_stats_semi_annual/sub_eissa_job.kjb
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/exchange_investor_stats_year/sub_eisy_job.kjb
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/exchange_investor_stock_stats/sub_eiss_job.kjb
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/exchange_investor_stats_week/sub_eissw_job.kjb
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/exchange_investor_stats_month/sub_eissm_job.kjb
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/exchange_investor_stats_qtr/sub_eissq_job.kjb
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/exchange_investor_stats_semi_annual/sub_eisssa_job.kjb
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/exchange_investor_stats_year/sub_eissy_job.kjb
+
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/exchange_direct_business_trade/start_dbt_job.kjb
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/exchange_direct_business_trade/sub_dbt_job.kjb
+
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/exchange_short_selling/start_short_selling_job.kjb
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/exchange_short_selling/sub_short_selling_job.kjb
+
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/exchange_trade_origin/start_eto_job.kjb
+sh /home/dbsadmin/pentaho-pdi/data-integration/kitchen.sh -file=/home/dbsadmin/bursa-etl/etlScripts/exchange_trade_origin/sub_eto_job.kjb
+
+
+local bursa ETL process path
+================================
+denti_archive: /media/dante/danteFiles/etl_workspace/bursa_archive/entitlement/
+denti_unprocess: /media/dante/danteFiles/etl_workspace/bursa_files/entitlement/
+
+dsect_archive: /media/dante/danteFiles/etl_workspace/bursa_archive/sectorial/
+dsect_unprocess: /media/dante/danteFiles/etl_workspace/bursa_files/sectorial/
+
+dtrans_archive: /media/dante/danteFiles/etl_workspace/bursa_archive/transaction/
+dtrans_unprocess: /media/dante/danteFiles/etl_workspace/bursa_files/transaction/
+
+etd_archive: /media/dante/danteFiles/etl_workspace/bursa_archive/demography/
+etd_unprocess: /media/dante/danteFiles/etl_workspace/bursa_files/demography/
+
+mart_archive: /media/dante/danteFiles/etl_workspace/bursa_archive/market/
+mart_unprocess: /media/dante/danteFiles/etl_workspace/bursa_files/market/
+
+eis_tmp: /media/dante/danteFiles/etl_workspace/bursa_files/inv_tmp/
+eis_archive: /media/dante/danteFiles/etl_workspace/bursa_archive/inv_stats/
+eis_unprocess: /media/dante/danteFiles/etl_workspace/bursa_files/inv_stats/
+eiss_arhive: /media/dante/danteFiles/etl_workspace/bursa_archive/inv_stock_stats/
+eiss_unprocess: /media/dante/danteFiles/etl_workspace/bursa_files/inv_stock_stats/
+eiss_loc: /media/dante/danteFiles/etl_workspace/bursa-etl-no-scheduler/exchange_investor_stock_stats/
+
+eism_archive: /media/dante/danteFiles/etl_workspace/bursa_archive/inv_stats_month/
+eism_unprocess: /media/dante/danteFiles/etl_workspace/bursa_files/inv_stats_month/
+
+eisq_archive: /media/dante/danteFiles/etl_workspace/bursa_archive/inv_stats_qtr/
+eisq_unprocess: /media/dante/danteFiles/etl_workspace/bursa_files/inv_stats_qtr/
+
+eissa_archive: /media/dante/danteFiles/etl_workspace/bursa_archive/inv_stats_semi_annual/
+eissa_unprocess: /media/dante/danteFiles/etl_workspace/bursa_files/inv_stats_semi_annual/
+
+eisw_archive: /media/dante/danteFiles/etl_workspace/bursa_archive/inv_stats_week/
+eisw_unprocess: /media/dante/danteFiles/etl_workspace/bursa_archive/inv_stats_week/
+
+eisy_archive: /media/dante/danteFiles/etl_workspace/bursa_archive/inv_stats_year/
+eisy_unprocess: /media/dante/danteFiles/etl_workspace/bursa_archive/inv_stats_year/
+
+eissm_archive: /media/dante/danteFiles/etl_workspace/bursa_archive/inv_stock_stats_month/
+eissm_unprocess: /media/dante/danteFiles/etl_workspace/bursa_files/inv_stock_stats_month/
+
+eissq_archive: /media/dante/danteFiles/etl_workspace/bursa_archive/inv_stock_stats_qtr/
+eissq_unprocess: /media/dante/danteFiles/etl_workspace/bursa_files/inv_stock_stats_qtr/
+
+eisssa_archive: /media/dante/danteFiles/etl_workspace/bursa_archive/inv_stock_stats_semi_annual/
+eisssa_unprocess: /media/dante/danteFiles/etl_workspace/bursa_files/inv_stock_stats_semi_annual/
+
+eissw_archive: /media/dante/danteFiles/etl_workspace/bursa_archive/inv_stock_stats_week/
+eissw_unprocess: /media/dante/danteFiles/etl_workspace/bursa_files/inv_stock_stats_week/
+
+eissy_archive: /media/dante/danteFiles/etl_workspace/bursa_archive/inv_stock_stats_year/
+eissy_unprocess: /media/dante/danteFiles/etl_workspace/bursa_files/inv_stock_stats_year/
+
+ess_archive: /media/dante/danteFiles/etl_workspace/bursa_archive/shortselling/
+ess_unprocess: /media/dante/danteFiles/etl_workspace/bursa_files/shortselling/
+
+dbt_archive: /media/dante/danteFiles/etl_workspace/bursa_archive/direct_business/
+dbt_unprocess: /media/dante/danteFiles/etl_workspace/bursa_files/direct_business/
+
+eto_archive: /media/dante/danteFiles/etl_workspace/bursa_archive/trade_origin/
+eto_unprocess: /media/dante/danteFiles/etl_workspace/bursa_files/trade_origin/

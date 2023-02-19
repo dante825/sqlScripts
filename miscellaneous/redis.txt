@@ -1,0 +1,23 @@
+not recommended to pass password in the command
+redis-cli -h localhost -p 6739 -a <password> 
+
+redis-cli -h localhost -p 6739 -n <db num: 0-15>
+AUTH <password>
+
+- to show all keys
+keys *
+
+- get the data
+get <key>
+
+- delete the data
+del <key>
+
+- scan the data
+SCAN 0 match plcDemo*
+
+-- remove all records from all db
+FLUSHALL
+
+-- remove all record in a db
+FLUSHDB

@@ -1,0 +1,1 @@
+db.getCollection('webCrawler').find({"matchedEntities.entityName": { "$in": ["bank negara malaysia"]}})

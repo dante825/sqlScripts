@@ -1,0 +1,1 @@
+db.getCollection('nerEntity').createIndex({"entity": 1})

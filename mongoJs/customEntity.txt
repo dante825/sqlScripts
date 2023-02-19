@@ -1,0 +1,154 @@
+The entityName is changed:
+
+{
+    "_id" : ObjectId("5e43d2a61e1f480af77c9a69"),
+    "entity" : "BANK NEGARA MALAYSIA",
+    "entityName" : "bank negara malaysia",
+    "entityId" : 3518212,
+    "dateUpdated" : ISODate("2020-02-12T18:25:42.789Z")
+}
+
+Remove the following documents from the nerEntity:
+{
+    "_id" : ObjectId("5ef0523eff0c3a561d1472b0"),
+    "entity" : "ACE",
+    "entityName" : "ace",
+    "entityId" : 2879345,
+    "dateUpdated" : ISODate("2020-06-22T14:39:58.003Z")
+}
+
+{
+    "_id" : ObjectId("5ef0523eff0c3a561d1472b1"),
+    "entity" : "ACE",
+    "entityName" : "ace",
+    "entityId" : 703764,
+    "dateUpdated" : ISODate("2020-06-22T14:39:58.005Z")
+}
+
+{
+    "_id" : ObjectId("5ef05d48ff0c3a561d43cb15"),
+    "entity" : "MAX",
+    "entityName" : "max",
+    "entityId" : 704964,
+    "dateUpdated" : ISODate("2020-06-22T15:27:04.500Z")
+}
+
+{
+    "_id" : ObjectId("5ef05d48ff0c3a561d43cb16"),
+    "entity" : "MAX",
+    "entityName" : "max",
+    "entityId" : 2880272,
+    "dateUpdated" : ISODate("2020-06-22T15:27:04.501Z")
+}
+
+{
+    "_id" : ObjectId("5ef05d48ff0c3a561d43cb17"),
+    "entity" : "MAX ",
+    "entityName" : "max",
+    "entityId" : 1353635,
+    "dateUpdated" : ISODate("2020-06-22T15:27:04.501Z")
+}
+
+{
+    "_id" : ObjectId("5ef05d3eff0c3a561d439826"),
+    "entity" : "MAS",
+    "entityName" : "mas",
+    "entityId" : 21633577,
+    "dateUpdated" : ISODate("2020-06-22T15:26:54.039Z")
+}
+
+{
+    "_id" : ObjectId("5ef05438ff0c3a561d1c0510"),
+    "entity" : "BIS",
+    "entityName" : "bis",
+    "entityId" : 706331,
+    "dateUpdated" : ISODate("2020-06-22T14:48:24.237Z")
+}
+
+{
+    "_id" : ObjectId("5ef05438ff0c3a561d1c050f"),
+    "entity" : "BIS",
+    "entityName" : "bis",
+    "entityId" : 22606449,
+    "dateUpdated" : ISODate("2020-06-22T14:48:24.236Z")
+}
+
+{
+    "_id" : ObjectId("5ef05d9bff0c3a561d453f15"),
+    "entity" : "MOH",
+    "entityName" : "moh",
+    "entityId" : 4424653,
+    "dateUpdated" : ISODate("2020-06-22T15:28:27.866Z")
+}
+
+{
+    "_id" : ObjectId("5ef05e13ff0c3a561d472949"),
+    "entity" : "NASA",
+    "entityName" : "nasa",
+    "entityId" : 2871483,
+    "dateUpdated" : ISODate("2020-06-22T15:30:27.879Z")
+}
+
+{
+    "_id" : ObjectId("5ef05e13ff0c3a561d47294a"),
+    "entity" : "NASA",
+    "entityName" : "nasa",
+    "entityId" : 703562,
+    "dateUpdated" : ISODate("2020-06-22T15:30:27.880Z")
+}
+
+{
+    "_id" : ObjectId("5ef05abdff0c3a561d381d1c"),
+    "entity" : "GPS",
+    "entityName" : "gps",
+    "entityId" : 706833,
+    "dateUpdated" : ISODate("2020-06-22T15:16:13.061Z")
+}
+
+{
+    "_id" : ObjectId("5ef05abdff0c3a561d381d1d"),
+    "entity" : "GPS",
+    "entityName" : "gps",
+    "entityId" : 2879932,
+    "dateUpdated" : ISODate("2020-06-22T15:16:13.061Z")
+}
+
+{
+    "_id" : ObjectId("5ef0522eff0c3a561d143c88"),
+    "entity" : "ABS",
+    "entityName" : "abs",
+    "entityId" : 2461843,
+    "dateUpdated" : ISODate("2020-06-22T14:39:42.303Z")
+}
+And remove all entity with empty names
+
+db.nerEntity.deleteMany({"entityName": ""})
+db.nerEntity.deleteMany({"entityName": "ace"})
+db.nerEntity.deleteMany({"entityName": "max"})
+db.nerEntity.deleteMany({"entityName": "mas"})
+db.nerEntity.deleteMany({"entityName": "bis"})
+db.nerEntity.deleteMany({"entityName": "moh"})
+db.nerEntity.deleteMany({"entityName": "nasa"})
+db.nerEntity.deleteMany({"entityName": "gps"})
+db.nerEntity.deleteMany({"entityName": "abs"})
+db.nerEntity.deleteMany({"entityName": "v"})
+
+# Delete all the records where name is less than 5 characters long
+db.nerEntity.deleteMany({ "$expr": { "$lt":[ {"$strLenCP": "$entityName"}, 10] }})
+
+# Delete all the records that starts with number
+db.nerEntity.deleteMany({"entity": {"$regex": "^[0-9]", "$options": "i"} })
+
+# Delete all the records that starts with symbol
+db.nerEntity.deleteMany({"entity": {"$regex": "^//?", "$options": "i"} })
+db.nerEntity.deleteMany({"entity": {"$regex": "^-", "$options": "i"} })
+db.nerEntity.deleteMany({"entity": {"$regex": "^\\?", "$options": "i"} })
+db.nerEntity.deleteMany({"entity": {"$regex": "^\\(", "$options": "i"} })
+db.nerEntity.deleteMany({"entity": {"$regex": "^\\)", "$options": "i"} })
+db.nerEntity.deleteMany({"entity": {"$regex": "^\\$", "$options": "i"} })
+db.nerEntity.deleteMany({"entity": {"$regex": "^\\@", "$options": "i"} })
+db.nerEntity.deleteMany({"entity": {"$regex": "^\\&", "$options": "i"} })
+db.nerEntity.deleteMany({"entity": {"$regex": "^\\.", "$options": "i"} })
+db.nerEntity.deleteMany({"entity": {"$regex": "^\\:", "$options": "i"} })
+db.nerEntity.deleteMany({"entity": {"$regex": "^\\`", "$options": "i"} })
+db.nerEntity.deleteMany({"entity": {"$regex": "^\\~", "$options": "i"} })

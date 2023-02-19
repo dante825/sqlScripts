@@ -1,0 +1,1 @@
+db.getCollection('webCrawler').find({"body": { "$regex": "tmf", "$options": "i"} })

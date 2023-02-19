@@ -1,0 +1,15 @@
+sed s/\x00//g ADVISOR_202001131610.csv 
+sed -i s/\x00//g ADVISOR_202001131610.csv 
+sed -i s/\0//g ADVISOR_202001131610.csv 
+sed -i s/\0//g ADVISOR_202001131658.csv 
+sed -ie s/\0//g ADVISOR_202001131658.csv 
+sed -iE s/\0//g ADVISOR_202001131658.csv 
+sed -E -i s/\0//g ADVISOR_202001131658.csv 
+sed -E -i s/\x00//g ADVISOR_202001131658.csv 
+sed -i BAK 's/\0//g' ADVISOR_202001131658.csv 
+sed -i  's/\0//g' ADVISOR_202001131658.csv 
+sed -i -E s/\x00//g ADVISOR_202001131658.csv 
+sed -i BAK 's/\0//g' ADVISOR_202001131658.csv
+
+in vi getting rid of null byte "\x00"
+:%s/[\x0]//g

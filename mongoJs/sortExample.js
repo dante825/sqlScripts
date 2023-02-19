@@ -1,0 +1,1 @@
+db.getCollection('nerEntity').find({}).sort({"dateUpdated": -1})

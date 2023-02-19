@@ -1,0 +1,1 @@
+db.getCollection('webCrawler').find({"nerDate": { "$gte": ISODate("2020-01-10T15:00:00.000Z") } })

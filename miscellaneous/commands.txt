@@ -1,0 +1,30 @@
+# Login to server command
+ssh <username>@<ipAddress> -p<portNumber>
+
+# Port forwarding command
+ssh -L 5432:localhost:5432 <username>@<ipAddress> -p<port>
+
+# mocha command
+npm test -t test/<test_script>.js
+
+# To open port in .6 server
+sudo firewall-cmd --zone=<definedZone> --add-port=5432/tcp --permanent
+sudo firewall-cmd --zone=<definedZone> --add-port=9093/tcp --permanent
+
+# To check listening ports
+netstat -tulpn | grep <port number>
+
+# Use RSYNC to copy a directory
+cd <the directory to store the backup> 
+rsync -auvz -e "ssh -i ~/.ssh/server_ed25519" <username>@<IP>:<fileLocation> .
+
+# Pulling files from another PC to local
+rsync -uvzP dante@192.168.0.138:<absolute_path_to_file> .
+# Pushing files from local to another PC
+rysnc -uvzP <list of files> -e "ssh -i ~/.ssh/server_ed25519" dante@192.168.100.22:/home/dante/Downloads/
+
+# SCP command
+scp -P <port> -i ~/.ssh/server_ed25519 <file> <username>@<IP>:<destination>
+
+# Changing an image to base64
+base64 <image path> > <file>
