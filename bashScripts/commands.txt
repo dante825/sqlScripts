@@ -19,7 +19,7 @@ cd <the directory to store the backup>
 rsync -auvz -e "ssh -i ~/.ssh/server_ed25519" <username>@<IP>:<fileLocation> .
 
 # Pulling files from another PC to local
-rsync -uvzP dante@192.168.0.138:<absolute_path_to_file> .
+rsync -uvzP -e "ssh -i ~/.ssh/server_ed25519" "dante@192.168.100.22:/home/dante/Downloads/*" .
 # Pushing files from local to another PC
 rysnc -uvzP <list of files> -e "ssh -i ~/.ssh/server_ed25519" dante@192.168.100.22:/home/dante/Downloads/
 
