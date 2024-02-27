@@ -21,7 +21,7 @@ rsync -auvz -e "ssh -i ~/.ssh/server_ed25519" <username>@<IP>:<fileLocation> .
 # Pulling files from another PC to local
 rsync -uvzP -e "ssh -i ~/.ssh/server_ed25519" "dante@192.168.100.22:/home/dante/Downloads/*" .
 # Pushing files from local to another PC
-rysnc -uvzP <list of files> -e "ssh -i ~/.ssh/server_ed25519" dante@192.168.100.22:/home/dante/Downloads/
+rysnc -uvzP <list of files> -e "ssh -i ~/.ssh/server_ed25519" dante@192.168.100.4:/home/dante/Downloads/
 
 # SCP command
 scp -P <port> -i ~/.ssh/server_ed25519 <file> <username>@<IP>:<destination>
