@@ -28,3 +28,6 @@ scp -P <port> -i ~/.ssh/server_ed25519 <file> <username>@<IP>:<destination>
 
 # Changing an image to base64
 base64 <image path> > <file>
+
+# When conda unable to update
+conda update -n base -c defaults conda --repodata-fn=repodata.json
